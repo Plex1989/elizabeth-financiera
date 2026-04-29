@@ -1,0 +1,269 @@
+import React, { useState } from 'react';
+import { 
+  MessageCircle, 
+  ShieldCheck, 
+  UserCheck, 
+  Zap, 
+  ArrowRight, 
+  CheckCircle2, 
+  Clock, 
+  HeadphonesIcon,
+  Award
+} from 'lucide-react';
+
+const App = () => {
+  const whatsappNumber = "522282779228";
+  const contactName = "Lic. Elizabeth De Victorio";
+
+  const handleWhatsApp = () => {
+    const message = `Hola ${contactName}, vi su página y me interesa recibir asesoría para un préstamo vía nómina o domiciliado.`;
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  const instituciones = [
+    { name: "IMSS", icon: "🏥" },
+    { name: "ISSSTE", icon: "🏢" },
+    { name: "PEMEX", icon: "🛢️" },
+    { name: "CFE", icon: "⚡" },
+    { name: "IPE", icon: "🎓" }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 scroll-smooth">
+      {/* --- NAVEGACIÓN --- */}
+      <nav className="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex flex-col">
+            <span className="text-xl font-black text-[#1e293b] tracking-tighter uppercase leading-none">
+              Elizabeth <span className="text-blue-700">De Victorio</span>
+            </span>
+            <span className="text-[10px] font-bold tracking-[0.3em] text-slate-400 mt-1 uppercase italic">Asesor Comercial Financiero</span>
+          </div>
+          <button 
+            onClick={handleWhatsApp}
+            className="bg-[#25d366] text-white px-5 py-2.5 rounded-full text-xs font-black flex items-center gap-2 hover:bg-green-600 transition-all shadow-lg uppercase tracking-wider"
+          >
+            <MessageCircle size={18} />
+            <span className="hidden sm:inline">WhatsApp Directo</span>
+          </button>
+        </div>
+      </nav>
+
+      {/* --- HERO SECTION --- */}
+      <section className="relative pt-16 pb-24 px-6 overflow-hidden bg-[#0f172a] text-white">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+          <div className="text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full mb-8">
+              <Award className="text-[#d4af37]" size={18} />
+              <span className="text-blue-300 text-[10px] font-bold uppercase tracking-[0.2em]">Trámite 100% Gratuito</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tighter uppercase italic">
+              PRESTAMOS VIA <span className="text-[#d4af37] not-italic">NOMINA</span> Y DOMICILIADOS
+            </h1>
+            
+            <div className="bg-white/5 border-l-4 border-[#d4af37] p-6 rounded-r-2xl mb-10 backdrop-blur-sm">
+              <p className="text-slate-300 text-lg md:text-xl font-medium leading-relaxed italic">
+                "Crédito para jubilados pensionados, trabajadores activos de gobierno estatal y federal e iniciativa privada"
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
+              <button 
+                onClick={handleWhatsApp}
+                className="bg-[#d4af37] text-[#0f172a] px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white transition-all shadow-[0_0_30px_rgba(212,175,55,0.3)] flex items-center justify-center gap-3 group"
+              >
+                Solicitar mi Crédito <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+
+          {/* Tarjeta Visual Informativa */}
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#d4af37] to-amber-600 rounded-[3rem] blur-2xl opacity-20 animate-pulse"></div>
+            <div className="relative bg-slate-900 border border-slate-800 p-8 rounded-[2.5rem] shadow-2xl">
+              <h3 className="text-[#d4af37] font-black text-xs uppercase tracking-[0.3em] mb-8 border-b border-slate-800 pb-4">Beneficios de Trayectoria</h3>
+              <div className="space-y-6">
+                {[
+                  { t: "Sin Trámites Digitales Complejos", d: "Atención humana, no bots." },
+                  { t: "Sin Letras Chiquitas", d: "Transparencia total en tu contrato." },
+                  { t: "Liquidez Inmediata", d: "Respuesta rápida a tu solicitud." },
+                  { t: "Seguridad Legal", d: "Convenios oficiales con instituciones." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <CheckCircle2 className="text-blue-500 shrink-0" size={24} />
+                    <div>
+                      <p className="font-bold text-sm text-white uppercase tracking-tight">{item.t}</p>
+                      <p className="text-slate-400 text-xs">{item.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SECCIÓN DE CONVENIOS (TRUST BAR) --- */}
+      <section className="py-12 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <p className="text-center text-slate-400 font-bold uppercase tracking-[0.4em] text-[10px] mb-10">Contamos con convenios en:</p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-20 grayscale opacity-60">
+            {instituciones.map((inst) => (
+              <div key={inst.name} className="flex items-center gap-3 group cursor-default">
+                <span className="text-3xl">{inst.icon}</span>
+                <span className="font-black text-xl text-slate-900 tracking-tighter italic group-hover:text-blue-700 transition-colors">{inst.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- CONTRASTE: HUMANO VS BOT --- */}
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-8 leading-tight uppercase italic tracking-tighter">
+              ¿Cansado de las <span className="text-blue-700">letras chiquitas</span> y los bots?
+            </h2>
+            <p className="text-slate-600 text-lg mb-10 leading-relaxed font-light">
+              Pedir un préstamo digital a veces da más dolores de cabeza que soluciones. En nuestra oficina, somos personas de <strong>carne y hueso</strong> atendiendo a personas.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="bg-white p-6 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100">
+                <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-4">
+                  <UserCheck size={24} />
+                </div>
+                <h4 className="font-black text-xs uppercase mb-2">Trato Directo</h4>
+                <p className="text-xs text-slate-500">Asesoría personalizada de la Lic. Elizabeth.</p>
+              </div>
+              <div className="bg-white p-6 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100">
+                <div className="w-12 h-12 bg-amber-50 text-[#d4af37] rounded-2xl flex items-center justify-center mb-4">
+                  <ShieldCheck size={24} />
+                </div>
+                <h4 className="font-black text-xs uppercase mb-2">Certeza Total</h4>
+                <p className="text-xs text-slate-500">Documentación clara y sin engaños.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="order-1 lg:order-2 bg-[#0f172a] rounded-[3rem] p-12 text-center relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <Zap className="text-[#d4af37] mx-auto mb-6 animate-bounce" size={48} />
+            <h3 className="text-2xl font-black text-white mb-4 uppercase italic">Tu trayectoria merece recompensa</h3>
+            <p className="text-slate-400 text-sm mb-8 font-light italic leading-loose">
+              "Cuento con años de experiencia personal para brindarte un trato directo, buscando siempre la mejor opción para ti."
+            </p>
+            <div className="pt-6 border-t border-slate-800">
+              <p className="text-white font-black text-sm uppercase tracking-widest leading-none">Lic. Elizabeth De Victorio</p>
+              <p className="text-[#d4af37] text-[10px] font-bold uppercase tracking-[0.3em] mt-2">Asesor Comercial</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- CARACTERÍSTICAS TÉCNICAS --- */}
+      <section className="py-24 bg-slate-900 text-white px-6">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-4 italic">Modalidades de <span className="text-[#d4af37]">Crédito</span></h2>
+          <div className="w-20 h-1 bg-[#d4af37] mx-auto rounded-full"></div>
+        </div>
+
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+          <div className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] hover:bg-white/10 transition-all group">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 bg-[#d4af37] text-[#0f172a] rounded-2xl flex items-center justify-center font-black text-xl">01</div>
+              <h3 className="text-2xl font-black uppercase tracking-tight italic">Vía Nómina</h3>
+            </div>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">Ideal para quienes buscan comodidad. El descuento se realiza de forma directa y transparente en tu recibo.</p>
+            <ul className="space-y-3 text-xs font-bold uppercase tracking-widest text-slate-300">
+              <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-green-500" /> Sin filas</li>
+              <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-green-500" /> Sin trámites de pago</li>
+            </ul>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] hover:bg-white/10 transition-all group">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-xl">02</div>
+              <h3 className="text-2xl font-black uppercase tracking-tight italic">Domiciliado</h3>
+            </div>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">Flexibilidad total vinculada a tu cuenta de banco. Control total y planes adaptados a tu capacidad.</p>
+            <ul className="space-y-3 text-xs font-bold uppercase tracking-widest text-slate-300">
+              <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Gran Alcance</li>
+              <li className="flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500" /> Planes Personalizados</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* --- CTA FINAL --- */}
+      <section className="py-24 px-6 bg-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <p className="text-[#d4af37] font-black uppercase tracking-[0.5em] text-xs mb-6 italic">¡No esperes más!</p>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 uppercase tracking-tighter leading-tight italic">
+            Tu trámite es <span className="text-blue-700">100% GRATUITO</span>
+          </h2>
+          <p className="text-slate-500 text-lg mb-12 max-w-xl mx-auto">
+            Recibe una pre-calificación en minutos hablando directamente con nosotros. Sin compromiso alguno.
+          </p>
+          
+          <div className="flex flex-col items-center gap-6">
+            <button 
+              onClick={handleWhatsApp}
+              className="bg-[#25d366] text-white px-12 py-6 rounded-[2rem] font-black uppercase tracking-widest text-lg hover:scale-105 transition-all shadow-2xl shadow-green-200 flex items-center gap-4"
+            >
+              <MessageCircle size={32} />
+              Enviar mensaje a WhatsApp
+            </button>
+            
+            <div className="flex items-center gap-6 mt-6">
+              <div className="flex items-center gap-2 text-slate-400 font-bold uppercase text-[10px] tracking-widest">
+                <Clock size={16} /> Respuesta Inmediata
+              </div>
+              <div className="flex items-center gap-2 text-slate-400 font-bold uppercase text-[10px] tracking-widest">
+                <HeadphonesIcon size={16} /> Asesoría 1 a 1
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <footer className="bg-[#0f172a] text-slate-500 py-16 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
+          <div className="mb-8">
+            <span className="font-serif italic text-4xl font-black text-white leading-none">Elizabeth</span>
+            <span className="text-[10px] font-bold tracking-[0.5em] text-[#d4af37] uppercase block mt-2">DE VICTORIO</span>
+          </div>
+          
+          <p className="max-w-md text-sm mb-10 leading-loose">
+            Especialista en soluciones de crédito personal para el sector público y privado en México.
+          </p>
+
+          <div className="flex gap-6 mb-12">
+            {[1,2,3].map(i => (
+              <a key={i} href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#d4af37] hover:text-[#0f172a] transition-all">
+                {i === 1 ? <MessageCircle size={20} /> : <ArrowRight size={20} />}
+              </a>
+            ))}
+          </div>
+
+          <div className="text-[9px] uppercase tracking-[0.3em] font-bold opacity-30">
+            &copy; 2026 ELIZABETH DE VICTORIO. TODOS LOS DERECHOS RESERVADOS.
+          </div>
+        </div>
+      </footer>
+      
+      {/* Botón Flotante */}
+      <button 
+        onClick={handleWhatsApp}
+        className="fixed bottom-8 right-8 bg-[#25d366] text-white p-5 rounded-full shadow-2xl z-50 hover:scale-110 active:scale-95 transition-all animate-bounce"
+      >
+        <MessageCircle size={28} />
+      </button>
+    </div>
+  );
+};
+
+export default App;
